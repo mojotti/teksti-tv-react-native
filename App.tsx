@@ -57,19 +57,21 @@ const DrawerMenu: FC = () => {
       <StatusBar barStyle={"light-content"} />
       <Drawer.Navigator
         initialRouteName="Home"
-        drawerPosition="left"
-        drawerActiveBackgroudColor={"#008755"}
-        drawerActiveTintColor={"#dbe9df"}
-        drawerItemStyle={{ marginVertical: 4 }}
-        drawerLabelStyle={{ fontSize: 17, color: "#e5e5e5" }}
+        screenOptions={{
+          drawerActiveTintColor: "#dbe9df",
+          drawerItemStyle: { marginVertical: 4 },
+          drawerLabelStyle: { fontSize: 17, color: "#e5e5e5" },
+          drawerActiveBackgroundColor: "#008755",
+          drawerPosition: "left",
+          gestureEnabled: false,
+          drawerStyle: {
+            backgroundColor: infoAreaColor,
+            paddingTop: height * 0.15,
+          },
+        }}
         backBehavior="none"
-        defaultStatus="closed"
         detachInactiveScreens
-        gestureEnabled={false}
-        drawerStyle={{
-          backgroundColor: infoAreaColor,
-          paddingTop: height * 0.15,
-        }}>
+        defaultStatus="closed">
         <Drawer.Screen
           name="Home"
           component={PageHandler}
