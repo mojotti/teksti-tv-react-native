@@ -1,10 +1,5 @@
 import React, { useContext, useMemo, useState } from "react";
-import {
-  Image,
-  StyleSheet,
-  TextInput,
-  View,
-} from "react-native";
+import { Image, StyleSheet, TextInput, View } from "react-native";
 
 import Loader from "./animation";
 import { ErrorScreen } from "./error-screen";
@@ -13,7 +8,6 @@ import { getScreenHeight } from "../utils";
 import { SettingsContext } from "../providers/settings";
 import { NavigationStatusContext } from "../providers/navigation-status";
 import { OrientationTypes, WindowContext } from "../providers/window";
-import { pageInfoLandscapeWidth } from "../utils/constants";
 
 type TextTvPageProps = {
   isKeyboardVisible: boolean;
@@ -89,7 +83,6 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
       <View
         style={{
           ...styles.bgContainer,
-          // ...pageStyles,
           height: pageHeight,
           width: pageWidth,
           position: "relative",
@@ -102,10 +95,10 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
             source={{ uri: imgSrc }}
             resizeMode="stretch"
             style={
-              props.isKeyboardVisible
+              props.isKeyboardVisible || isLoading
                 ? {
                     ...styles.img,
-                    opacity: 0.2,
+                    opacity: isLoading ? 0.5 : 0.2,
                     width: pageWidth,
                     height: pageHeight,
                   }
@@ -122,6 +115,7 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
             autoFocus
             caretHidden
             placeholder={page || ""}
+            placeholderTextColor={"rgba(0,0,0,0.4)"}
             maxLength={3}
             onChangeText={onInputChange}
             disableFullscreenUI
@@ -130,9 +124,9 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
                 ? {
                     ...styles.textInput,
                     height: height * 0.15,
-                    width: width * 0.3,
+                    width: viewWidth * 0.3,
                     top: height * 0.1,
-                    left: width * 0.35 - pageInfoLandscapeWidth,
+                    left: viewWidth * 0.35,
                     fontSize: height * 0.06,
                   }
                 : {

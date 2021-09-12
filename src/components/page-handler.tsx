@@ -6,7 +6,7 @@ import {
   Platform,
   ToastAndroid,
   TouchableHighlight,
-  View
+  View,
 } from "react-native";
 import ExtraDimensions from "react-native-extra-dimensions-android";
 
@@ -36,13 +36,14 @@ import { TextTvPageNavBar } from "./text-tv-page-navbar";
 
 export const PageHandler: React.FunctionComponent = () => {
   const [isKeyboardVisible, setKeyboardVisibility] = useState<boolean>(false);
-  const { fetchPage, error, invalidateCache, textTvResponse } = useContext(
-    PageContext,
-  );
+  const { fetchPage, error, invalidateCache, textTvResponse } =
+    useContext(PageContext);
 
-  const { page: currentPage, subPage: currentSubPage, setSubPage } = useContext(
-    NavigationStatusContext,
-  );
+  const {
+    page: currentPage,
+    subPage: currentSubPage,
+    setSubPage,
+  } = useContext(NavigationStatusContext);
 
   const historyRef = useRef<string[]>([]);
 
@@ -56,8 +57,8 @@ export const PageHandler: React.FunctionComponent = () => {
   useEffect(() => {
     if (appState === "active") {
       invalidateCache();
-      fetchPage("100", "1", true, true);
-      historyRef.current = ["100"];
+      fetchPage(currentPage, currentSubPage, true, true);
+      // historyRef.current = [currentPage];
     }
   }, [appState]);
 
@@ -73,6 +74,10 @@ export const PageHandler: React.FunctionComponent = () => {
   }, [currentSubPage]);
 
   useEffect(() => {
+    if (Platform.OS !== "android") {
+      return;
+    }
+
     if (isKeyboardVisible !== keyboardShown) {
       setKeyboardVisibility(keyboardShown);
     }
@@ -210,6 +215,7 @@ export const PageHandler: React.FunctionComponent = () => {
         refreshPage={refreshPage}
         setKeyboardVisibility={setKeyboardVisibility}
         subPageMax={textTvResponse?.page.subPageCount || "1"}
+        onBackPress={toHomePage}
       />
       <GestureRecognizer
         onSwipe={onSwipe}

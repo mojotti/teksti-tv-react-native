@@ -7,11 +7,12 @@ import {
   pageInfoLandscapeWidth,
 } from "../utils/constants";
 import {
-  ActivityIndicator, Platform,
+  ActivityIndicator,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import React, { FC, useContext } from "react";
@@ -28,6 +29,7 @@ export const TextTvPageNavBar: React.FC<{
   refreshPage: () => void;
   setKeyboardVisibility: (isVisible: boolean) => void;
   subPageMax: string;
+  onBackPress: () => void;
 }> = (props) => {
   const { error } = useContext(PageContext);
   const { settings, storeValue } = useContext(SettingsContext);
@@ -63,6 +65,8 @@ export const TextTvPageNavBar: React.FC<{
     );
   };
 
+  const showBackButton = page !== "100";
+
   return (
     <View
       style={{
@@ -78,15 +82,18 @@ export const TextTvPageNavBar: React.FC<{
           width: "100%",
         }}>
         <MenuWrapper isLandscape={isLandscape}>
-          <TouchableOpacity onPress={navigation.openDrawer}>
+          <TouchableOpacity
+            onPress={
+              showBackButton ? props.onBackPress : navigation.openDrawer
+            }>
             <Icon
               style={{
                 ...styles.menu,
-                marginRight: isLandscape ? 0 : 15,
+                marginRight: isLandscape ? 0 : 10,
                 padding: isLandscape ? 10 : 0,
                 marginBottom: isLandscape ? -10 : 0,
               }}
-              name={"menu"}
+              name={showBackButton ? "arrow-back-ios" : "menu"}
               size={iconSizeMedium}
               color="#FFFFFF"
             />
@@ -94,9 +101,15 @@ export const TextTvPageNavBar: React.FC<{
           {isLoading && !hasUnknownError && (
             <ActivityIndicator size={fontSizeMedium + 8} color="#FFFFFF" />
           )}
-          {!isLoading && <Text style={styles.pageInfoText}>{page || ""}</Text>}
+          {!isLoading && (
+            <Text
+              style={{ ...styles.pageInfoText, fontVariant: ["tabular-nums"] }}>
+              {page || ""}
+            </Text>
+          )}
           {isLandscape && (
-            <Text style={styles.pageInfoText}>
+            <Text
+              style={{ ...styles.pageInfoText, fontVariant: ["tabular-nums"] }}>
               {`${subPage}/${props.subPageMax}`}
             </Text>
           )}
@@ -151,7 +164,8 @@ export const TextTvPageNavBar: React.FC<{
             />
           </TouchableOpacity>
           {!isLandscape && (
-            <Text style={styles.pageInfoText}>
+            <Text
+              style={{ ...styles.pageInfoText, fontVariant: ["tabular-nums"] }}>
               {`${subPage}/${props.subPageMax}`}
             </Text>
           )}

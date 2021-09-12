@@ -12,7 +12,10 @@ import Icon from "react-native-vector-icons/MaterialIcons";
 import { Settings } from "./src/components/settings";
 import { SettingsProvider } from "./src/providers/settings";
 import { AppStateProvider } from "./src/providers/app-state";
-import { NavigationStatusProvider } from "./src/providers/navigation-status";
+import {
+  NavigationStatusContext,
+  NavigationStatusProvider,
+} from "./src/providers/navigation-status";
 import { DeveloperPage } from "./src/components/developer-page";
 import { WindowContext, WindowProvider } from "./src/providers/window";
 import { SafeAreaView, StatusBar } from "react-native";
@@ -52,6 +55,8 @@ const DrawerMenu: FC = () => {
 
   const { height } = useContext(WindowContext).applicationWindow;
 
+  const { page } = useContext(NavigationStatusContext);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <StatusBar barStyle={"light-content"} />
@@ -63,7 +68,7 @@ const DrawerMenu: FC = () => {
           drawerLabelStyle: { fontSize: 17, color: "#e5e5e5" },
           drawerActiveBackgroundColor: "#008755",
           drawerPosition: "left",
-          gestureEnabled: false,
+          gestureEnabled: page === "100",
           drawerStyle: {
             backgroundColor: infoAreaColor,
             paddingTop: height * 0.15,
