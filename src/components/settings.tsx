@@ -289,9 +289,7 @@ export const Settings = () => {
             styles={{ marginTop: 16, marginBottom: 10 }}
             onPress={() =>
               Linking.openURL(
-                `mailto:mojosoft.feedback@gmail.com?subject=Palautetta Teksti-TV:stä&body=Hei,
-                
-                Sovelluksen versio: ${packageJson.version}`,
+                `mailto:mojosoft.feedback@gmail.com?subject=Palautetta Teksti-TV:stä&body=Sovelluksen versio: ${packageJson.version}`,
               )
             }
           />

@@ -23,6 +23,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+sourcemap.ios.js
 
 # Android/IntelliJ
 #

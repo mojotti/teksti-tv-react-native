@@ -14,7 +14,8 @@ import {
   createStackNavigator,
   StackNavigationProp,
 } from "@react-navigation/stack";
-import { pageInfoHeight } from "./src/utils/constants";
+import { iconSizeLarge, pageInfoHeight } from "./src/utils/constants";
+import Icon from "react-native-vector-icons/Ionicons";
 
 const App: FC = () => (
   <AppStateProvider>
@@ -67,14 +68,21 @@ const Navigator: FC = () => {
           options={{
             title: "Asetukset",
             headerShown: true,
+            headerBackImage: (props) => (
+              <Icon
+                name={"chevron-back-outline"}
+                size={iconSizeLarge}
+                color={props.tintColor}
+              />
+            ),
             headerStyle: {
               backgroundColor: "#1c1c1c",
               height: pageInfoHeight,
             },
+            headerBackTitleVisible: true,
             headerTitleStyle: {
               color: "#eeeeee",
             },
-            // header: () => <Header title={"Asetukset"} />,
           }}
         />
         {__DEV__ && (
