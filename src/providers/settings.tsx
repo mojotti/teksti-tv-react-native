@@ -7,7 +7,6 @@ import React, {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export type SettingKey =
-  | "showLinks"
   | "screenRatio"
   | "highlightScreenLinks"
   | "favorites"
@@ -22,7 +21,6 @@ interface SettingsContext {
 }
 
 interface Settings {
-  showLinks: boolean;
   screenRatio: ScreenRatio;
   highlightScreenLinks: boolean;
   favorites: string[];
@@ -40,7 +38,6 @@ export type ScreenRatio =
 export type FavoriteIcon = "heart" | "star" | "none";
 
 const defaultSettings: Settings = {
-  showLinks: true,
   screenRatio: "4:3",
   highlightScreenLinks: false,
   favorites: [],
@@ -55,9 +52,8 @@ export const SettingsProvider: FunctionComponent = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const [links, ratio, highlightLinks, favorites, favoriteIcon] =
+        const [ratio, highlightLinks, favorites, favoriteIcon] =
           await Promise.all([
-            AsyncStorage.getItem("@showLinks"),
             AsyncStorage.getItem("@screenRatio"),
             AsyncStorage.getItem("@highlightScreenLinks"),
             AsyncStorage.getItem("@favorites"),
@@ -69,8 +65,6 @@ export const SettingsProvider: FunctionComponent = (props) => {
             ratio === null
               ? defaultSettings.screenRatio
               : (ratio as ScreenRatio),
-          showLinks:
-            links === null ? defaultSettings.showLinks : links === "true",
           highlightScreenLinks: highlightLinks === "true",
           favorites: favorites?.split(",") || [],
           favoriteIcon:

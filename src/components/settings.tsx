@@ -234,13 +234,9 @@ export const Settings = () => {
             Linkkejä muodostetaan Teksti-TV -sivun sisällön perusteella.
           </Text>
 
-          <SwitchCmp
-            isEnabled={settings.showLinks}
-            label={"Näytä linkkipalkki"}
-            onPress={() => {
-              storeValue("showLinks", !settings.showLinks);
-            }}
-          />
+          <Text style={{ ...styles.body, ...styles.marginBottom }}>
+            Voit klikata linkkiä suoraan Teksti-TV-sivulta tai linkkipalkista.
+          </Text>
 
           <View style={styles.smallMarginBottom} />
 

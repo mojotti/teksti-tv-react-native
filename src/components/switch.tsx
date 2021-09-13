@@ -25,9 +25,8 @@ export const SwitchCmp: React.FC<{
       </Text>
       <View style={styles.switch}>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={isEnabled ? acceptedBlue : "#f4f3f4"}
-          ios_backgroundColor={"#423d3d"}
+          trackColor={{ false: "#8c8c8c", true: "#2770ff" }}
+          ios_backgroundColor={"#949494"}
           value={isEnabled}
           disabled
           onValueChange={onPress}

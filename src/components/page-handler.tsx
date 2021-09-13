@@ -240,31 +240,30 @@ export const PageHandler: React.FunctionComponent = () => {
         </TouchableHighlight>
       </GestureRecognizer>
 
-      {(isLandscape || !isKeyboardVisible) &&
-        (settings.showLinks || settings.favorites.length > 0) && (
-          <>
+      {(isLandscape || !isKeyboardVisible) && (
+        <>
+          <View
+            style={{
+              height: isLandscape ? "100%" : linkAreaHeight,
+              width: isLandscape ? linkAreaLandscapeWidth : "100%",
+            }}>
+            {!(error && error.code !== 404) ? (
+              <LinksBar onPageChange={onPageChange} />
+            ) : (
+              <View style={{ flex: 1, backgroundColor: "#000000" }} />
+            )}
+          </View>
+          {Platform.OS === "android" && softMenuHeight === 0 && !isLandscape && (
             <View
               style={{
-                height: isLandscape ? "100%" : linkAreaHeight,
-                width: isLandscape ? linkAreaLandscapeWidth : "100%",
-              }}>
-              {!(error && error.code !== 404) ? (
-                <LinksBar onPageChange={onPageChange} />
-              ) : (
-                <View style={{ flex: 1, backgroundColor: "#000000" }} />
-              )}
-            </View>
-            {Platform.OS === "android" && softMenuHeight === 0 && !isLandscape && (
-              <View
-                style={{
-                  height: portraitNoTouchBarArea,
-                  width: "100%",
-                  backgroundColor: "#000000",
-                }}
-              />
-            )}
-          </>
-        )}
+                height: portraitNoTouchBarArea,
+                width: "100%",
+                backgroundColor: "#000000",
+              }}
+            />
+          )}
+        </>
+      )}
     </Container>
   );
 };
