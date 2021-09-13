@@ -9,12 +9,13 @@ import React, {
 } from "react";
 import {
   Animated,
-  Easing, Platform,
+  Easing,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -23,14 +24,17 @@ import { getLinkPages } from "../utils";
 import { NavigationStatusContext } from "../providers/navigation-status";
 import { PageContext } from "../providers/page";
 import { SettingsContext } from "../providers/settings";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/Ionicons";
 import { OrientationTypes, WindowContext } from "../providers/window";
 import {
   fontSizeLarge,
   fontSizeMedium,
+  iconSizeLarge,
   iconSizeMedium,
   iconSizeSmall,
 } from "../utils/constants";
+import { useNavigation } from "@react-navigation/native";
+import { HomeScreenNavigationProp } from "../../App";
 
 const validPositiveNumber = (number: any): number => {
   const n = Number(number);
@@ -48,7 +52,8 @@ const UnmemoizedLinksBar: FunctionComponent<{
   const [scrollView, setScrollView] = useState<ScrollView>();
 
   const [completeScrollBarWidth, setCompleteScrollBarWidth] = useState(1);
-  const [visibleScrollBarWidth, setVisibleScrollBarWidth] = useState(0);
+  const [linkBarWidth, setLinkBarWidth] = useState(0);
+  const [menuWidth, setMenuWidth] = useState<number>(0);
 
   const scaleAnim = useRef(new Animated.Value(0)).current;
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -61,7 +66,8 @@ const UnmemoizedLinksBar: FunctionComponent<{
 
   const { applicationWindow, orientation } = useContext(WindowContext);
 
-  const { width } = applicationWindow;
+  const { width: screenWidth } = applicationWindow;
+  const width = screenWidth - menuWidth;
 
   const isLandscape = orientation === OrientationTypes.Landscape;
 
@@ -75,11 +81,10 @@ const UnmemoizedLinksBar: FunctionComponent<{
 
   const links = hasFavorites ? settings.favorites : generatedLinks;
 
-  useEffect(() => scrollView?.scrollTo({ x: 0, y: 0, animated: false }), [
-    links,
-    scrollView,
-    settings.favorites,
-  ]);
+  useEffect(
+    () => scrollView?.scrollTo({ x: 0, y: 0, animated: false }),
+    [links, scrollView, settings.favorites],
+  );
 
   React.useEffect(() => {
     scaleAnim.setValue(0);
@@ -92,7 +97,7 @@ const UnmemoizedLinksBar: FunctionComponent<{
     }).start();
   }, [scaleAnim, links]);
 
-  const diff = validPositiveNumber(width - visibleScrollBarWidth);
+  const diff = validPositiveNumber(width - linkBarWidth);
 
   return (
     <View style={styles.linksBarContainer}>
@@ -100,7 +105,7 @@ const UnmemoizedLinksBar: FunctionComponent<{
         <View style={styles.headerContainer}>
           <Animated.Text
             onLayout={(event: any) =>
-              setVisibleScrollBarWidth(event.nativeEvent.layout.width)
+              setLinkBarWidth(event.nativeEvent.layout.width)
             }
             style={{
               ...styles.text,
@@ -109,8 +114,7 @@ const UnmemoizedLinksBar: FunctionComponent<{
                   translateX: Animated.multiply(
                     scrollX,
                     validPositiveNumber(
-                      (width - visibleScrollBarWidth) /
-                        (completeScrollBarWidth - width),
+                      (width - linkBarWidth) / (completeScrollBarWidth - width),
                     ),
                   ).interpolate({
                     inputRange: [0, diff],
@@ -124,19 +128,14 @@ const UnmemoizedLinksBar: FunctionComponent<{
           </Animated.Text>
         </View>
       )}
-      {isLandscape && (
-        <View style={styles.headerContainerLandscape}>
-          <Text style={styles.textLandscape}>
-            {hasFavorites ? "Suosikit" : "Sivun linkit"}
-          </Text>
-        </View>
-      )}
       <ScrollContainer
         isLandscape={isLandscape}
         scrollX={scrollX}
         setCompleteScrollBarWidth={setCompleteScrollBarWidth}
         setScrollView={setScrollView}
-        width={width}>
+        setMenuWidth={setMenuWidth}
+        hasFavorites={hasFavorites}
+        width={screenWidth}>
         {links.map((link) => (
           <TouchableOpacity key={link} onPress={() => props.onPageChange(link)}>
             <LinearGradient
@@ -153,8 +152,8 @@ const UnmemoizedLinksBar: FunctionComponent<{
                   style={styles.icon}
                   name={
                     settings.favoriteIcon === "heart"
-                      ? "favorite-border"
-                      : "star-border"
+                      ? "heart-outline"
+                      : "star-outline"
                   }
                   size={isLandscape ? iconSizeSmall : iconSizeMedium}
                   color="#FFFFFF"
@@ -183,67 +182,135 @@ const UnmemoizedLinksBar: FunctionComponent<{
 export const LinksBar = React.memo(UnmemoizedLinksBar);
 
 const ScrollContainer: FC<{
+  hasFavorites: boolean;
   isLandscape: boolean;
   width: number;
   setScrollView: React.Dispatch<React.SetStateAction<ScrollView | undefined>>;
   setCompleteScrollBarWidth: React.Dispatch<React.SetStateAction<number>>;
+  setMenuWidth: (width: number) => void;
   scrollX: Animated.Value;
 }> = ({
   children,
+  hasFavorites,
   isLandscape,
   width,
   setCompleteScrollBarWidth,
   setScrollView,
+  setMenuWidth,
   scrollX,
-}) => (
-  <>
-    {isLandscape && (
-      <ScrollView
-        horizontal={false}
-        style={{
-          ...styles.links,
-          width: "100%",
-          flexDirection: "column",
-        }}
-        contentContainerStyle={{
-          ...styles.container,
-          flexDirection: "column",
-        }}
-        ref={(ref) => ref && setScrollView(ref)}>
-        {children}
-      </ScrollView>
-    )}
-    {!isLandscape && (
-      <ScrollView
-        horizontal
-        style={{ ...styles.links, width }}
-        ref={(ref) => ref && setScrollView(ref)}
-        contentContainerStyle={{
-          ...styles.container,
-          flexDirection: "row",
-        }}
-        showsHorizontalScrollIndicator={false}
-        showsVerticalScrollIndicator={isLandscape}
-        onContentSizeChange={(width) => {
-          setCompleteScrollBarWidth(width);
-        }}
-        onScroll={Animated.event([
-            {
-              nativeEvent: {
-                contentOffset: {
-                  x: scrollX,
+}) => {
+  return (
+    <>
+      {isLandscape && (
+        <View
+          style={{
+            ...styles.links,
+            width: "100%",
+            flex: 1,
+            flexDirection: "column",
+          }}>
+          <Menu isLandscape={isLandscape} setMenuWidth={setMenuWidth} />
+          {isLandscape && (
+            <View style={styles.headerContainerLandscape}>
+              <Text style={styles.textLandscape}>
+                {hasFavorites ? "Suosikit" : "Sivun linkit"}
+              </Text>
+            </View>
+          )}
+          <ScrollView
+            horizontal={false}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+            contentContainerStyle={{
+              ...styles.container,
+              flexDirection: "column",
+            }}
+            showsVerticalScrollIndicator
+            ref={(ref) => ref && setScrollView(ref)}>
+            {children}
+          </ScrollView>
+        </View>
+      )}
+      {!isLandscape && (
+        <View
+          style={{
+            ...styles.links,
+            display: "flex",
+            flexDirection: "row",
+            paddingVertical: 10,
+            width,
+          }}>
+          <ScrollView
+            horizontal
+            ref={(ref) => ref && setScrollView(ref)}
+            contentContainerStyle={{
+              ...styles.container,
+            }}
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={isLandscape}
+            onContentSizeChange={(width) => {
+              setCompleteScrollBarWidth(width);
+            }}
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: {
+                      x: scrollX,
+                    },
+                  },
                 },
-              },
-            },
-          ],
-          { useNativeDriver: false },
-        )}
-        scrollEventThrottle={10}>
-        {children}
-      </ScrollView>
-    )}
-  </>
-);
+              ],
+              { useNativeDriver: false },
+            )}
+            scrollEventThrottle={10}>
+            {children}
+          </ScrollView>
+          <Menu isLandscape={isLandscape} setMenuWidth={setMenuWidth} />
+        </View>
+      )}
+    </>
+  );
+};
+
+const Menu: FC<{
+  isLandscape: boolean;
+  setMenuWidth: (width: number) => void;
+}> = ({ isLandscape, setMenuWidth }) => {
+  const navigation = useNavigation<HomeScreenNavigationProp>();
+
+  return (
+    <TouchableOpacity
+      onLayout={(event) => setMenuWidth(event.nativeEvent.layout.width)}
+      onPress={() => navigation.navigate("Settings")}
+      style={{
+        marginRight: isLandscape ? 0 : 0,
+        marginVertical: isLandscape ? 5 : 0,
+        borderLeftWidth: isLandscape ? 0 : 1.5,
+        borderLeftColor: isLandscape ? "transparent" : "rgba(96,96,96,0.4)",
+        borderBottomWidth: isLandscape ? 1 : 0,
+        borderBottomColor: isLandscape ? "rgba(96,96,96,0.4)" : "transparent",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}>
+      <Icon
+        style={{
+          ...styles.menu,
+          paddingLeft: isLandscape ? 10 : 10,
+          paddingRight: isLandscape ? 10 : 10,
+          paddingTop: isLandscape ? 0 : 6,
+          paddingBottom: isLandscape ? 10 : 6,
+        }}
+        name={"cog-outline"}
+        size={iconSizeLarge}
+        color="#FFFFFF"
+      />
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   linksBarContainer: {
@@ -256,7 +323,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: infoAreaColor,
-    // height: "100%",
   },
   links: {
     backgroundColor: infoAreaColor,
@@ -316,5 +382,8 @@ const styles = StyleSheet.create({
     lineHeight: 14,
     color: lightGray,
     paddingVertical: 4,
+  },
+  menu: {
+    alignSelf: "center",
   },
 });

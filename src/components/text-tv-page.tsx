@@ -98,7 +98,7 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
               props.isKeyboardVisible || isLoading
                 ? {
                     ...styles.img,
-                    opacity: isLoading ? 0.5 : 0.2,
+                    opacity: isLoading ? 0.4 : 0.2,
                     width: pageWidth,
                     height: pageHeight,
                   }

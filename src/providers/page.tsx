@@ -48,9 +48,8 @@ export const PageProvider: FunctionComponent = (props) => {
   const [error, setErrorCode] = useState<PageFetchError>();
 
   const { addPageLoad } = useContext(AppStateContext);
-  const { setPage, setSubPage, setPageDataLoadingStatus } = useContext(
-    NavigationStatusContext,
-  );
+  const { setPage, setSubPage, setPageDataLoadingStatus, setImgLoadingStatus } =
+    useContext(NavigationStatusContext);
 
   const [textTvResponse, setTextTvResponse] = useState<TextTvResponse>();
 
@@ -99,6 +98,7 @@ export const PageProvider: FunctionComponent = (props) => {
     }
 
     setPageDataLoadingStatus(true);
+    setImgLoadingStatus(true);
 
     const uri = getPageJsonPath(page);
 
@@ -108,6 +108,7 @@ export const PageProvider: FunctionComponent = (props) => {
       if (response.status >= 400) {
         setErrorCode({ page, code: response.status });
         setPageDataLoadingStatus(false);
+        setImgLoadingStatus(false);
 
         return {
           error: {

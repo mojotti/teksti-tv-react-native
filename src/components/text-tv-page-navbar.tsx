@@ -1,6 +1,7 @@
 import { NavBar } from "./navbar";
 import {
   fontSizeMedium,
+  iconSizeLarge,
   iconSizeMedium,
   iconSizeSmall,
   pageInfoHeight,
@@ -14,11 +15,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/Ionicons";
 import React, { FC, useContext } from "react";
 import { infoAreaColor } from "../utils/colors";
-import { useNavigation } from "@react-navigation/native";
-import { HomeScreenNavigationProp } from "../../App";
 import { SettingsContext } from "../providers/settings";
 import { NavigationStatusContext } from "../providers/navigation-status";
 import { PageContext } from "../providers/page";
@@ -48,8 +47,6 @@ export const TextTvPageNavBar: React.FC<{
 
   const isLandscape = orientation === OrientationTypes.Landscape;
 
-  const navigation = useNavigation<HomeScreenNavigationProp>();
-
   const isPageInFavorites = settings.favorites.includes(page);
 
   const addPageToFavorites = () => {
@@ -64,8 +61,6 @@ export const TextTvPageNavBar: React.FC<{
       ].sort(),
     );
   };
-
-  const showBackButton = page !== "100";
 
   return (
     <View
@@ -82,22 +77,21 @@ export const TextTvPageNavBar: React.FC<{
           width: "100%",
         }}>
         <MenuWrapper isLandscape={isLandscape}>
-          <TouchableOpacity
-            onPress={
-              showBackButton ? props.onBackPress : navigation.openDrawer
-            }>
-            <Icon
-              style={{
-                ...styles.menu,
-                marginRight: isLandscape ? 0 : 10,
-                padding: isLandscape ? 10 : 0,
-                marginBottom: isLandscape ? -10 : 0,
-              }}
-              name={showBackButton ? "arrow-back-ios" : "menu"}
-              size={iconSizeMedium}
-              color="#FFFFFF"
-            />
-          </TouchableOpacity>
+          {page !== "100" && (
+            <TouchableOpacity onPress={props.onBackPress}>
+              <Icon
+                style={{
+                  ...styles.menu,
+                  paddingRight: isLandscape ? 0 : 10,
+                  padding: isLandscape ? 10 : 0,
+                  paddingBottom: isLandscape ? -10 : 0,
+                }}
+                name={"chevron-back-outline"}
+                size={iconSizeLarge}
+                color="#FFFFFF"
+              />
+            </TouchableOpacity>
+          )}
           {isLoading && !hasUnknownError && (
             <ActivityIndicator size={fontSizeMedium + 8} color="#FFFFFF" />
           )}
@@ -130,11 +124,11 @@ export const TextTvPageNavBar: React.FC<{
                 name={
                   settings.favoriteIcon === "heart"
                     ? isPageInFavorites
-                      ? "favorite"
-                      : "favorite-border"
+                      ? "heart"
+                      : "heart-outline"
                     : isPageInFavorites
                     ? "star"
-                    : "star-border"
+                    : "star-outline"
                 }
                 size={iconSizeSmall}
                 color="#FFFFFF"
@@ -147,7 +141,7 @@ export const TextTvPageNavBar: React.FC<{
           <TouchableOpacity onPress={props.refreshPage}>
             <Icon
               style={{ ...styles.icon, marginRight: isLandscape ? 0 : 15 }}
-              name="refresh"
+              name="refresh-outline"
               size={iconSizeMedium}
               color="#FFFFFF"
             />
@@ -158,7 +152,7 @@ export const TextTvPageNavBar: React.FC<{
             }>
             <Icon
               style={{ ...styles.icon, marginRight: isLandscape ? 0 : 15 }}
-              name="search"
+              name="search-outline"
               size={iconSizeMedium}
               color="#FFFFFF"
             />

@@ -1,5 +1,12 @@
 import React from "react";
-import { Platform, StyleSheet, Switch, Text, TouchableOpacity, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { acceptedBlue, lightGray } from "../utils/colors";
 
 export const SwitchCmp: React.FC<{
@@ -20,6 +27,7 @@ export const SwitchCmp: React.FC<{
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
           thumbColor={isEnabled ? acceptedBlue : "#f4f3f4"}
+          ios_backgroundColor={"#423d3d"}
           value={isEnabled}
           disabled
           onValueChange={onPress}

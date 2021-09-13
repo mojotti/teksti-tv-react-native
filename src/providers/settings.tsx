@@ -41,7 +41,7 @@ export type FavoriteIcon = "heart" | "star" | "none";
 
 const defaultSettings: Settings = {
   showLinks: true,
-  screenRatio: "3:2",
+  screenRatio: "4:3",
   highlightScreenLinks: false,
   favorites: [],
   favoriteIcon: "heart",
@@ -55,19 +55,14 @@ export const SettingsProvider: FunctionComponent = (props) => {
   useEffect(() => {
     (async () => {
       try {
-        const [
-          links,
-          ratio,
-          highlightLinks,
-          favorites,
-          favoriteIcon,
-        ] = await Promise.all([
-          AsyncStorage.getItem("@showLinks"),
-          AsyncStorage.getItem("@screenRatio"),
-          AsyncStorage.getItem("@highlightScreenLinks"),
-          AsyncStorage.getItem("@favorites"),
-          AsyncStorage.getItem("@favoriteIcon"),
-        ]);
+        const [links, ratio, highlightLinks, favorites, favoriteIcon] =
+          await Promise.all([
+            AsyncStorage.getItem("@showLinks"),
+            AsyncStorage.getItem("@screenRatio"),
+            AsyncStorage.getItem("@highlightScreenLinks"),
+            AsyncStorage.getItem("@favorites"),
+            AsyncStorage.getItem("@favoriteIcon"),
+          ]);
 
         setSettings({
           screenRatio:

@@ -1,14 +1,15 @@
 import React, { useContext, useState } from "react";
 import {
+  Linking,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
-import { acceptedBlue, lightGray } from "../utils/colors";
+import { acceptedBlue, bodyTextLinkColor, lightGray } from "../utils/colors";
 import { SwitchCmp } from "./switch";
 import { Divider } from "./divider";
 import { SettingKey, SettingsContext } from "../providers/settings";
@@ -16,10 +17,10 @@ import { CheckBoxCmp } from "./checkbox";
 import { BackNavigationHOC } from "./back-navigation-hoc";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import { isValidPage } from "../utils";
+import { Button } from "./button";
+import packageJson from "../../package.json";
 
-const screenRatioHelp = `Huom!
-
-Kuvasuhteella on merkitystä ainoastaan, kun sovellusta käytetään pystyasennossa.
+const screenRatioHelp = `Kuvasuhteella on merkitystä ainoastaan, kun sovellusta käytetään pystyasennossa.
             
 Laitteesi näytön koko saattaa vaikuttaa kuvasuhteen toteutumiseen.`;
 
@@ -174,35 +175,6 @@ export const Settings = () => {
 
           <Divider />
 
-          <Text style={styles.title}>{`Linkit`}</Text>
-
-          <Text style={{ ...styles.body, ...styles.marginBottom }}>
-            Linkkejä muodostetaan Teksti-TV -sivun sisällön perusteella.
-          </Text>
-
-          <SwitchCmp
-            isEnabled={settings.showLinks}
-            label={"Näytä linkkipalkki"}
-            onPress={() => {
-              storeValue("showLinks", !settings.showLinks);
-            }}
-          />
-
-          <View style={styles.smallMarginBottom} />
-
-          <SwitchCmp
-            isEnabled={settings.highlightScreenLinks}
-            label={"Korosta sivun linkkejä"}
-            onPress={() => {
-              storeValue(
-                "highlightScreenLinks",
-                !settings.highlightScreenLinks,
-              );
-            }}
-          />
-
-          <Divider />
-
           <Text style={styles.title}>{`Kuvasuhde`}</Text>
 
           <Text style={{ ...styles.body, ...styles.marginBottom }}>
@@ -255,6 +227,82 @@ export const Settings = () => {
           />
 
           <Divider />
+
+          <Text style={styles.title}>{`Linkit`}</Text>
+
+          <Text style={{ ...styles.body, ...styles.marginBottom }}>
+            Linkkejä muodostetaan Teksti-TV -sivun sisällön perusteella.
+          </Text>
+
+          <SwitchCmp
+            isEnabled={settings.showLinks}
+            label={"Näytä linkkipalkki"}
+            onPress={() => {
+              storeValue("showLinks", !settings.showLinks);
+            }}
+          />
+
+          <View style={styles.smallMarginBottom} />
+
+          <SwitchCmp
+            isEnabled={settings.highlightScreenLinks}
+            label={"Korosta sivun linkkejä"}
+            onPress={() => {
+              storeValue(
+                "highlightScreenLinks",
+                !settings.highlightScreenLinks,
+              );
+            }}
+          />
+
+          <Divider />
+
+          <Text style={styles.title}>{`Tietoja sovelluksesta`}</Text>
+          <Text
+            style={{
+              ...styles.body,
+              marginBottom: 14,
+            }}>{`Tämä sovellus näyttää YLE Teksti-TV:n sisältöä.`}</Text>
+          <Text
+            style={{
+              ...styles.body,
+              marginBottom: 14,
+            }}>{`Lisätietoja: `}</Text>
+          <Text
+            style={{ ...styles.body, ...styles.link, ...styles.indent }}
+            onPress={() => Linking.openURL("http://yle.fi")}>
+            YLE
+          </Text>
+          <Text
+            style={{ ...styles.body, ...styles.link, ...styles.indent }}
+            onPress={() => Linking.openURL("https://yle.fi/aihe/tekstitv")}>
+            YLE Teksti-TV
+          </Text>
+
+          <Divider />
+          <Text style={styles.title}>{`Palaute`}</Text>
+          <Text style={styles.body}>
+            {"Auta Teksti-TV -sovelluksen kehitystä ja lähetä palautetta!"}
+          </Text>
+          <Button
+            label={"Lähetä palautetta"}
+            styles={{ marginTop: 16, marginBottom: 10 }}
+            onPress={() =>
+              Linking.openURL(
+                `mailto:mojosoft.feedback@gmail.com?subject=Palautetta Teksti-TV:stä&body=Hei,
+                
+                Sovelluksen versio: ${packageJson.version}`,
+              )
+            }
+          />
+          <Divider />
+
+          <Text style={styles.title}>{`Versio`}</Text>
+          <Text
+            style={{
+              ...styles.body,
+              marginBottom: 60,
+            }}>{`Sovelluksen versio: ${packageJson.version}`}</Text>
         </ScrollView>
       </View>
     </BackNavigationHOC>
@@ -331,5 +379,14 @@ const styles = StyleSheet.create({
   deleteIcon: {
     marginLeft: 10,
     alignSelf: "center",
+  },
+  link: {
+    textDecorationLine: "underline",
+    fontWeight: "bold",
+    color: bodyTextLinkColor,
+    marginBottom: 10,
+  },
+  indent: {
+    paddingLeft: 14,
   },
 });
