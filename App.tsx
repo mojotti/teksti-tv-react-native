@@ -14,11 +14,7 @@ import {
   createStackNavigator,
   StackNavigationProp,
 } from "@react-navigation/stack";
-import {
-  fontSizeLarge,
-  fontSizeMedium,
-  pageInfoHeight,
-} from "./src/utils/constants";
+import { pageInfoHeight } from "./src/utils/constants";
 
 const App: FC = () => (
   <AppStateProvider>
@@ -27,7 +23,7 @@ const App: FC = () => (
         <NavigationStatusProvider>
           <PageProvider>
             <NavigationContainer>
-              <DrawerMenu />
+              <Navigator />
             </NavigationContainer>
           </PageProvider>
         </NavigationStatusProvider>
@@ -50,7 +46,7 @@ export type HomeScreenNavigationProp = StackNavigationProp<
   "Home"
 >;
 
-const DrawerMenu: FC = () => {
+const Navigator: FC = () => {
   const Stack = createStackNavigator();
 
   return (
@@ -77,7 +73,6 @@ const DrawerMenu: FC = () => {
             },
             headerTitleStyle: {
               color: "#eeeeee",
-              fontSize: fontSizeMedium,
             },
             // header: () => <Header title={"Asetukset"} />,
           }}
