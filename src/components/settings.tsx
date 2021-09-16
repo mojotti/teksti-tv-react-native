@@ -253,7 +253,7 @@ export const Settings = () => {
 
           <Divider />
 
-          <Text style={styles.title}>{`Tietoja sovelluksesta`}</Text>
+          <Text style={styles.title}>{`Tietoa sovelluksesta`}</Text>
           <Text
             style={{
               ...styles.body,

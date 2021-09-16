@@ -47,8 +47,6 @@ export const PageHandler: React.FunctionComponent = () => {
 
   const historyRef = useRef<string[]>([]);
 
-  const { settings } = useContext(SettingsContext);
-
   const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const { appState } = useContext(AppStateContext);
@@ -57,7 +55,7 @@ export const PageHandler: React.FunctionComponent = () => {
   useEffect(() => {
     if (appState === "active") {
       invalidateCache();
-      fetchPage(currentPage, currentSubPage, true, true);
+      fetchPage(currentPage, currentSubPage, true, false);
       // historyRef.current = [currentPage];
     }
   }, [appState]);

@@ -8,29 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* teksti_tv_react_nativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* teksti_tv_react_nativeTests.m */; };
-		11D8127C42CD4400931A8D4B /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B5FA6EF611645F08F4E692E /* Entypo.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		428FAA711AAD4DC4A1BDB314 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 915B12B031784728B9CBF550 /* EvilIcons.ttf */; };
-		492330A6B0D647F0805BAFF9 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 971B7689AA52420A9763CCB2 /* Feather.ttf */; };
-		4B37829EC0E74A84B2724860 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EC96AAFBB9DF4AC1A9848771 /* AntDesign.ttf */; };
-		4DBCD62454EB4433A7CDA24D /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134B5169312C417A9AD96A94 /* FontAwesome5_Brands.ttf */; };
 		6172F2D35A4C3AA820D92908 /* libPods-teksti_tv_react_native.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-teksti_tv_react_native.a */; };
-		622C26B979F24129AC142D82 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9CA19C95807143C48A45A2C5 /* MaterialCommunityIcons.ttf */; };
-		65E8F156D49D4B27BBD17E5E /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CAACECFD8DB64766B2FBB779 /* Foundation.ttf */; };
-		6D3047D383AF414994255DFC /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97D37B364EE647A585F617A4 /* SimpleLineIcons.ttf */; };
-		70F61550A8E84B34BA89AD80 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F3AB206FF3249F38EDF6B40 /* FontAwesome5_Regular.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-teksti_tv_react_native-teksti_tv_react_nativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-teksti_tv_react_native-teksti_tv_react_nativeTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		9FE84EB2B4E647E0AE5D3F30 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A60F0C31A8DC452BB85F1E82 /* Zocial.ttf */; };
 		A385C8F326E4C6D3006D4D19 /* TekstiTvReactNative.swift in Sources */ = {isa = PBXBuildFile; fileRef = A385C8F226E4C6D3006D4D19 /* TekstiTvReactNative.swift */; };
-		C1C5CEA9A57C4E709988E707 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2A97D2B57C2344CE94CABEB6 /* Fontisto.ttf */; };
-		C53DA96152E145FA8C6F49E2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2687038DF09140E9B3607BB6 /* FontAwesome5_Solid.ttf */; };
-		CF9FCAEBA57841DBAFBEE190 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFDCBD4E9801414EBC65C5D6 /* Ionicons.ttf */; };
-		D272F3A5A42F4186B94F0FB4 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 966EB8F49F0D457581F37E78 /* Octicons.ttf */; };
-		D45FAB02DD3C4D53A937739C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C47B0EBADCB1434B8FF4C402 /* FontAwesome.ttf */; };
-		E607F0DB6080484089B1232F /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7251642118C4E4D9B35CA08 /* MaterialIcons.ttf */; };
+		A3D8AF0726F23A0000640D28 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = A3D8AF0626F23A0000640D28 /* main.jsbundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +31,6 @@
 		00E356EE1AD99517003FC87E /* teksti_tv_react_nativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = teksti_tv_react_nativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* teksti_tv_react_nativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = teksti_tv_react_nativeTests.m; sourceTree = "<group>"; };
-		134B5169312C417A9AD96A94 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* teksti_tv_react_native.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = teksti_tv_react_native.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = teksti_tv_react_native/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = teksti_tv_react_native/AppDelegate.m; sourceTree = "<group>"; };
@@ -55,29 +38,16 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = teksti_tv_react_native/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = teksti_tv_react_native/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.release.xcconfig"; path = "Target Support Files/Pods-teksti_tv_react_native-teksti_tv_react_nativeTests/Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.release.xcconfig"; sourceTree = "<group>"; };
-		2687038DF09140E9B3607BB6 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
-		2A97D2B57C2344CE94CABEB6 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		5B5FA6EF611645F08F4E692E /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-teksti_tv_react_native.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-teksti_tv_react_native.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.debug.xcconfig"; path = "Target Support Files/Pods-teksti_tv_react_native-teksti_tv_react_nativeTests/Pods-teksti_tv_react_native-teksti_tv_react_nativeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = teksti_tv_react_native/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8F3AB206FF3249F38EDF6B40 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		915B12B031784728B9CBF550 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		966EB8F49F0D457581F37E78 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		971B7689AA52420A9763CCB2 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		97D37B364EE647A585F617A4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		9CA19C95807143C48A45A2C5 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		A385C8F126E4C6D2006D4D19 /* teksti_tv_react_native-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "teksti_tv_react_native-Bridging-Header.h"; sourceTree = "<group>"; };
 		A385C8F226E4C6D3006D4D19 /* TekstiTvReactNative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TekstiTvReactNative.swift; sourceTree = "<group>"; };
-		A60F0C31A8DC452BB85F1E82 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		A3CAEBA626F1B4DB005B128F /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		A3D8AF0626F23A0000640D28 /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-teksti_tv_react_native-teksti_tv_react_nativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-teksti_tv_react_native-teksti_tv_react_nativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFDCBD4E9801414EBC65C5D6 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-teksti_tv_react_native.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teksti_tv_react_native.debug.xcconfig"; path = "Target Support Files/Pods-teksti_tv_react_native/Pods-teksti_tv_react_native.debug.xcconfig"; sourceTree = "<group>"; };
-		C47B0EBADCB1434B8FF4C402 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		C7251642118C4E4D9B35CA08 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		CAACECFD8DB64766B2FBB779 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-teksti_tv_react_native.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teksti_tv_react_native.release.xcconfig"; path = "Target Support Files/Pods-teksti_tv_react_native/Pods-teksti_tv_react_native.release.xcconfig"; sourceTree = "<group>"; };
-		EC96AAFBB9DF4AC1A9848771 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -153,13 +123,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				A3D8AF0626F23A0000640D28 /* main.jsbundle */,
+				A3CAEBA526F1B496005B128F /* Fonts */,
 				13B07FAE1A68108700A75B9A /* teksti_tv_react_native */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* teksti_tv_react_nativeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
-				9976803044474E729D468AED /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -175,27 +146,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9976803044474E729D468AED /* Resources */ = {
+		A3CAEBA526F1B496005B128F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EC96AAFBB9DF4AC1A9848771 /* AntDesign.ttf */,
-				5B5FA6EF611645F08F4E692E /* Entypo.ttf */,
-				915B12B031784728B9CBF550 /* EvilIcons.ttf */,
-				971B7689AA52420A9763CCB2 /* Feather.ttf */,
-				C47B0EBADCB1434B8FF4C402 /* FontAwesome.ttf */,
-				134B5169312C417A9AD96A94 /* FontAwesome5_Brands.ttf */,
-				8F3AB206FF3249F38EDF6B40 /* FontAwesome5_Regular.ttf */,
-				2687038DF09140E9B3607BB6 /* FontAwesome5_Solid.ttf */,
-				2A97D2B57C2344CE94CABEB6 /* Fontisto.ttf */,
-				CAACECFD8DB64766B2FBB779 /* Foundation.ttf */,
-				AFDCBD4E9801414EBC65C5D6 /* Ionicons.ttf */,
-				9CA19C95807143C48A45A2C5 /* MaterialCommunityIcons.ttf */,
-				C7251642118C4E4D9B35CA08 /* MaterialIcons.ttf */,
-				966EB8F49F0D457581F37E78 /* Octicons.ttf */,
-				97D37B364EE647A585F617A4 /* SimpleLineIcons.ttf */,
-				A60F0C31A8DC452BB85F1E82 /* Zocial.ttf */,
+				A3CAEBA626F1B4DB005B128F /* Ionicons.ttf */,
 			);
-			name = Resources;
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -303,24 +259,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				A3D8AF0726F23A0000640D28 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				4B37829EC0E74A84B2724860 /* AntDesign.ttf in Resources */,
-				11D8127C42CD4400931A8D4B /* Entypo.ttf in Resources */,
-				428FAA711AAD4DC4A1BDB314 /* EvilIcons.ttf in Resources */,
-				492330A6B0D647F0805BAFF9 /* Feather.ttf in Resources */,
-				D45FAB02DD3C4D53A937739C /* FontAwesome.ttf in Resources */,
-				4DBCD62454EB4433A7CDA24D /* FontAwesome5_Brands.ttf in Resources */,
-				70F61550A8E84B34BA89AD80 /* FontAwesome5_Regular.ttf in Resources */,
-				C53DA96152E145FA8C6F49E2 /* FontAwesome5_Solid.ttf in Resources */,
-				C1C5CEA9A57C4E709988E707 /* Fontisto.ttf in Resources */,
-				65E8F156D49D4B27BBD17E5E /* Foundation.ttf in Resources */,
-				CF9FCAEBA57841DBAFBEE190 /* Ionicons.ttf in Resources */,
-				622C26B979F24129AC142D82 /* MaterialCommunityIcons.ttf in Resources */,
-				E607F0DB6080484089B1232F /* MaterialIcons.ttf in Resources */,
-				D272F3A5A42F4186B94F0FB4 /* Octicons.ttf in Resources */,
-				6D3047D383AF414994255DFC /* SimpleLineIcons.ttf in Resources */,
-				9FE84EB2B4E647E0AE5D3F30 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +279,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n\n";
+			shellScript = "set -e\n\n\n#export NODE_BINARY=node\n#../node_modules/react-native/scripts/react-native-xcode.sh\n\nENTRY_FILE=index.js ../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		077E01280D4B4AD18B2E1770 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -422,7 +362,7 @@
 		ADC9DDC32298B72B3CF5DC8E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -432,7 +372,7 @@
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-teksti_tv_react_native/Pods-teksti_tv_react_native-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-teksti_tv_react_native/Pods-teksti_tv_react_native-resources.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -564,7 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 3GU5CUTF32;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = teksti_tv_react_native/Info.plist;
@@ -573,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.9;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -595,7 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 3GU5CUTF32;
 				INFOPLIST_FILE = teksti_tv_react_native/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -603,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.9;
+				MARKETING_VERSION = 2.0.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
