@@ -15,7 +15,7 @@ import { Divider } from "./divider";
 import { SettingKey, SettingsContext } from "../providers/settings";
 import { CheckBoxCmp } from "./checkbox";
 import { BackNavigationHOC } from "./back-navigation-hoc";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/Ionicons";
 import { isValidPage } from "../utils";
 import { Button } from "./button";
 import packageJson from "../../package.json";
@@ -133,7 +133,7 @@ export const Settings = () => {
                 <TouchableOpacity onPress={() => deleteFavorite(favorite)}>
                   <Icon
                     style={styles.deleteIcon}
-                    name="delete"
+                    name="trash-outline"
                     size={28}
                     color="#FFFFFF"
                   />
