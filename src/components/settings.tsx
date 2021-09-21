@@ -62,7 +62,9 @@ export const Settings = () => {
   return (
     <BackNavigationHOC>
       <View style={styles.container}>
-        <ScrollView style={styles.scrollContainer}>
+        <ScrollView
+          style={styles.scrollContainer}
+          keyboardShouldPersistTaps={"handled"}>
           <Text style={styles.title}>{`Suosikit`}</Text>
 
           <Text style={{ ...styles.body, ...styles.marginBottom }}>
@@ -285,7 +287,7 @@ export const Settings = () => {
             styles={{ marginTop: 16, marginBottom: 10 }}
             onPress={() =>
               Linking.openURL(
-                `mailto:mojosoft.feedback@gmail.com?subject=Palautetta Teksti-TV:stä&body=Sovelluksen versio: ${packageJson.version}`,
+                `mailto:tekstitvmobile@gmail.com?subject=Palautetta Teksti-TV:stä&body=Sovelluksen versio: ${packageJson.version}`,
               )
             }
           />
