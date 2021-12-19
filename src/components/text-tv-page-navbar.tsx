@@ -86,7 +86,11 @@ export const TextTvPageNavBar: React.FC<{
                   padding: isLandscape ? 10 : 0,
                   paddingBottom: isLandscape ? -10 : 0,
                 }}
-                name={"chevron-back-outline"}
+                name={
+                  Platform.OS === "ios"
+                    ? "chevron-back-outline"
+                    : "arrow-back-outline"
+                }
                 size={iconSizeLarge}
                 color="#FFFFFF"
               />

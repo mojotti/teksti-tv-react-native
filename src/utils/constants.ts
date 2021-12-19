@@ -7,9 +7,9 @@ export const pageInfoLandscapeWidth = isHighDef ? 80 : 75;
 export const linkAreaHeight = isHighDef ? 90 : 80;
 export const linkAreaLandscapeWidth = isHighDef ? 100 : 85;
 
-export const fontSizeMedium = isHighDef ? 24 : 22;
-export const fontSizeLarge = isHighDef ? 28 : 24;
-export const fontSizeSmall = isHighDef ? 26 : 24;
+export const fontSizeLarge = isHighDef ? 28 : 26;
+export const fontSizeMedium = isHighDef ? 26 : 24;
+export const fontSizeSmall = isHighDef ? 24 : 22;
 
 export const iconSizeLarge = isHighDef ? 30 : 28;
 export const iconSizeMedium = isHighDef ? 28 : 26;

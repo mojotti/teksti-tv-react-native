@@ -9,7 +9,7 @@ import { AppStateProvider } from "./src/providers/app-state";
 import { NavigationStatusProvider } from "./src/providers/navigation-status";
 import { DeveloperPage } from "./src/components/developer-page";
 import { WindowProvider } from "./src/providers/window";
-import { SafeAreaView, StatusBar } from "react-native";
+import { Platform, SafeAreaView, StatusBar } from "react-native";
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -68,18 +68,23 @@ const Navigator: FC = () => {
           options={{
             title: "Asetukset",
             headerShown: true,
+            headerTitleAlign: "center",
             headerBackImage: (props) => (
               <Icon
-                name={"chevron-back-outline"}
+                name={
+                  Platform.OS === "ios"
+                    ? "chevron-back-outline"
+                    : "arrow-back-outline"
+                }
                 size={iconSizeLarge}
-                color={props.tintColor}
+                color={Platform.OS === "ios" ? props.tintColor : "#FFFFFF"}
               />
             ),
             headerStyle: {
               backgroundColor: "#1c1c1c",
               height: pageInfoHeight,
             },
-            headerBackTitleVisible: true,
+            headerBackTitleVisible: Platform.OS === "ios",
             headerTitleStyle: {
               color: "#eeeeee",
             },
