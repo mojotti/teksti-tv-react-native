@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import React, { FC } from "react";
 import { PageHandler } from "./src/components/page-handler";
 import { PageProvider } from "./src/providers/page";
-import { NavigationContainer } from "@react-navigation/native";
+import { DarkTheme, NavigationContainer } from "@react-navigation/native";
 import { Settings } from "./src/components/settings";
 import { SettingsProvider } from "./src/providers/settings";
 import { AppStateProvider } from "./src/providers/app-state";
@@ -23,7 +23,7 @@ const App: FC = () => (
       <SettingsProvider>
         <NavigationStatusProvider>
           <PageProvider>
-            <NavigationContainer>
+            <NavigationContainer theme={DarkTheme}>
               <Navigator />
             </NavigationContainer>
           </PageProvider>

@@ -11,7 +11,7 @@ import { SettingsContext } from "../providers/settings";
 import { NavigationStatusContext } from "../providers/navigation-status";
 import { PageContext } from "../providers/page";
 import { OrientationTypes, WindowContext } from "../providers/window";
-import { pageInfoHeight } from "../utils/constants";
+import { TextTVPage } from "./text-tv-page";
 
 type RunWithPosition = { run: Run; positionHorizontal: number };
 
@@ -135,7 +135,6 @@ export const LinkMapper: FunctionComponent<{
         setViewHeight(event.nativeEvent.layout.height);
         setViewWidth(event.nativeEvent.layout.width);
       }}>
-      <>{props.children}</>
       {!props.isKeyboardVisible && (
         <MemoizedLinks
           highlightLinks={settings.highlightScreenLinks && !isLoading}
@@ -145,6 +144,7 @@ export const LinkMapper: FunctionComponent<{
           viewWidth={viewWidth}
         />
       )}
+      {props.children}
     </View>
   );
 };

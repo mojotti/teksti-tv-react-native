@@ -1,4 +1,11 @@
-import React, { FC, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  FC,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
   Alert,
@@ -21,7 +28,6 @@ import {
 import { LinksBar } from "./links-bar";
 import { PageContext } from "../providers/page";
 import { LinkMapper } from "./link-mapper";
-import { SettingsContext } from "../providers/settings";
 import { HomeScreenNavigationProp } from "../../App";
 import { useKeyboard } from "@react-native-community/hooks";
 import { AppStateContext } from "../providers/app-state";
@@ -67,21 +73,7 @@ export const PageHandler: React.FunctionComponent = () => {
     ];
   }, [currentPage]);
 
-  useEffect(() => {
-    fetchPage(currentPage, currentSubPage);
-  }, [currentSubPage]);
-
-  useEffect(() => {
-    if (Platform.OS !== "android") {
-      return;
-    }
-
-    if (isKeyboardVisible !== keyboardShown) {
-      setKeyboardVisibility(keyboardShown);
-    }
-  }, [keyboardShown]);
-
-  const toHomePage = () => {
+  const toHomePage = useCallback(() => {
     if (historyRef.current.length === 0 || !navigation.isFocused()) {
       return false;
     }
@@ -103,7 +95,7 @@ export const PageHandler: React.FunctionComponent = () => {
     fetchPage(prevPage, "1", false, true);
 
     return true;
-  };
+  }, [fetchPage, navigation]);
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener(
@@ -112,17 +104,19 @@ export const PageHandler: React.FunctionComponent = () => {
     );
 
     return () => backHandler.remove();
-  }, []);
+  }, [toHomePage]);
 
   useEffect(() => {
     if (error?.code === 404) {
+      const msg = `📺👀 Sivua ${error.page} ei löydy.`;
+
       Platform.OS === "android"
         ? ToastAndroid.showWithGravity(
-            `Sivua ${error.page} ei löydy.`,
+            msg,
             ToastAndroid.SHORT,
             ToastAndroid.CENTER,
           )
-        : Alert.alert(`📺👀 Sivua ${error.page} ei löydy.`);
+        : Alert.alert(msg);
     }
   }, [error]);
 
@@ -157,6 +151,7 @@ export const PageHandler: React.FunctionComponent = () => {
       return;
     }
 
+    fetchPage(currentPage, String(newSubPage));
     setSubPage(String(newSubPage));
   };
 
@@ -230,9 +225,7 @@ export const PageHandler: React.FunctionComponent = () => {
             <TextTVPage
               onPageChange={onPageChange}
               isKeyboardVisible={isKeyboardVisible}
-              setKeyboardVisibility={(isVisible) =>
-                setKeyboardVisibility(isVisible)
-              }
+              setKeyboardVisibility={setKeyboardVisibility}
             />
           </LinkMapper>
         </TouchableHighlight>

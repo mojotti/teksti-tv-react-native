@@ -1,4 +1,4 @@
-package com.teksti_tv_react_native;
+package com.teksti_tv_mobile;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "teksti_tv_react_native";
+    return "teksti_tv_mobile";
   }
 }

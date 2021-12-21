@@ -50,13 +50,8 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
 
   const pageHeight = useMemo(
     () =>
-      getScreenHeight(
-        settings.screenRatio,
-        viewHeight,
-        width * 0.97,
-        isLandscape,
-      ),
-    [settings.screenRatio, viewHeight, width, isLandscape],
+      getScreenHeight(settings.screenRatio, viewHeight, pageWidth, isLandscape),
+    [getScreenHeight, settings.screenRatio, viewHeight, pageWidth, isLandscape],
   );
 
   return (
@@ -119,6 +114,7 @@ export const TextTVPage: React.FunctionComponent<TextTvPageProps> = (props) => {
             maxLength={3}
             onChangeText={onInputChange}
             disableFullscreenUI
+            returnKeyType="go"
             style={
               isLandscape
                 ? {
