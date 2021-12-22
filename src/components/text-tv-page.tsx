@@ -174,6 +174,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     textAlign: "center",
     borderRadius: 4,
+    color: "#000000",
     overflow: "hidden",
   },
   displayNone: {
